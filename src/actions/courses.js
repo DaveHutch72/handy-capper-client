@@ -10,7 +10,7 @@ export const getCourses = () => {
 export const addCourse = course => {
     return (dispatch) => {
         dispatch({type: "ADD_COURSE"})
-        fetch ('/courses', {
+        fetch (`/courses`, {
             method: "POST",
             body: JSON.stringify(course),
             headers: {
@@ -20,5 +20,20 @@ export const addCourse = course => {
         })
         .then(res => res.json())
         .then(course => dispatch({type: "COURSE_ADDED", payload: course}))
+    }
+}
+
+export const addScore = score => {
+    return (dispatch) => {
+        dispatch({type: "ADD_SCORE"})
+        fetch(`/scores`, { 
+            method: 'POST',
+            body: JSON.stringify(score),
+            headers:{
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(res => res.json())
+        .then(score => dispatch({type: "SCORE_ADDED", payload: score}))
     }
 }

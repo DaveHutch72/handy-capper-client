@@ -9,10 +9,9 @@ class CourseList extends Component {
     }
 
     render() {
-    console.log("rendering")
     const coursesLis = this.props.courses.map(c => 
         <Link key={c.id}to={`/courses/${c.id}`}> 
-            <li key={c.id}>{c.name} - {c.location}</li>
+            <li key={c.id}>{c.name} - {c.par} - {c.slope} - {c.rating}</li>
         </Link>
     )
                                             
@@ -31,7 +30,6 @@ class CourseList extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log("I am state", state)
     return {
         courses: state.courseReducer.courses,
         loading: state.courseReducer.loading,

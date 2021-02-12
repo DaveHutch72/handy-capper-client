@@ -17,7 +17,7 @@ class CourseForm extends Component {
     handleOnChangeContent = (event) => {
         this.setState({...this.state,
             course: {...this.state.course,
-                [event.target.name]: event.target.value}
+                [event.target.name]: event.target.value},
         })
     }
 
@@ -25,7 +25,6 @@ class CourseForm extends Component {
         event.preventDefault()
         const course = {...this.state.course}
         this.props.addCourse(course)
-        this.props.history.push('/courses')
         this.setState({
             course: {
                 name: '',
@@ -35,6 +34,7 @@ class CourseForm extends Component {
             },
             loading: false
         })
+        this.props.history.push('/courses')
     }
 
     render() {

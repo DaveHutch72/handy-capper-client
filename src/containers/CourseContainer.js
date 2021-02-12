@@ -6,6 +6,7 @@ import Home from '../components/Home'
 import CourseForm from './CourseForm'
 import { getCourses } from '../actions/courses'
 import CourseList from '../components/CourseList'
+import CourseScoreContainer from './CourseScoreContainer'
 
 class CourseContainer extends Component {
 
@@ -20,8 +21,8 @@ class CourseContainer extends Component {
                 <Switch>
                     <Route exact path='/courses' component={CourseList} />
                     <Route exact path='/' component={Home} />
-                    <Route path='/course/new' component={CourseForm}/>
-                    <Route path='/course/:id' component={CourseScoresContainer} />
+                    <Route exact path='/course/new' component={CourseForm}/>
+                    <Route path='/courses/:id' component={CourseScoreContainer} />
                 </Switch>
             </div>
         )
@@ -29,7 +30,6 @@ class CourseContainer extends Component {
 }
 
   const mapStateToProps = state => {
-    console.log("I am state", state);
     return {
       courses: state.courseReducer.courses,
       loading: state.courseReducer.loading
