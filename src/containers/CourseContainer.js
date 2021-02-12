@@ -21,6 +21,7 @@ class CourseContainer extends Component {
                     <Route exact path='/courses' component={CourseList} />
                     <Route exact path='/' component={Home} />
                     <Route path='/course/new' component={CourseForm}/>
+                    <Route path='/course/:id' component={CourseScoresContainer} />
                 </Switch>
             </div>
         )
