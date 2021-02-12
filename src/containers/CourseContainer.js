@@ -1,24 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Home from '../components/Home'
+import CourseForm from './CourseForm'
+import { getCourses } from '../actions/courses'
 
 class CourseContainer extends Component {
+
+    componentDidMount() {
+        this.props.getCourses()
+    }
+
     render() {
         return (
             <div>
                 <NavBar/>
                 <Switch>
                     <Route exact path='/' component={Home} />
-                    {/* <Route path='/course/new' component={PostForm}/>
-                    <Route path='/course/:id/edit' render={(routerProps) => <EditPost {...routerProps}  />}/>
-                    <Route path='/course/:id' render={(routerProps) => <Post {...routerProps} posts={this.props.posts}/>}/>
-                    <Route exact path='/courses' render={(routerProps) => <PostList {...routerProps} posts={this.props.posts}/>}/>
-                    <Route path='/courses/:course_id/scores' render={(routerProps) => <Comments {...routerProps} comments={this.props.post.comments}/>}/> */}
+                    <Route path='/course/new' component={CourseForm}/>
                 </Switch>
                 hi
             </div>
         )
     }
 }
-export default CourseContainer
+
+  const mapStateToProps = state => {
+    console.log("I am state", state);
+    return {
+      courses: state.courseReducer.posts,
+      loading: state.courseReducer.loading
+    }
+  }
+
+export default connect(mapStateToProps, { getCourses })(CourseContainer)
