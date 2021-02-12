@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { addCourse } from '../actions/courses';
+import { connect } from 'react-redux';
 
 class CourseForm extends Component {
 
@@ -22,15 +24,59 @@ class CourseForm extends Component {
         })
     }
 
+    handleOnSubmit = event => {
+        event.preventDefault()
+        const course = {...this.state.course}
+        this.props.addCourse(course)
+        this.props.history.push('/courses')
+        this.setState({
+            course: {
+                name: '',
+                par: 0,
+                rating: 0,
+                slope: 0
+            },
+            loading: false
+        })
+    }
 
-    
     render() {
         return (
-            <div>
-                insert form here
-            </div>
-        )
-    }
+            
+            <form onSubmit={this.handleOnSubmit}>
+                <br/>
+                <h4>Add a Course</h4>
+                <label>Course Name:</label><br/>
+                <input 
+                name="name"
+                type="text"
+                value={this.state.course.name}
+                onChange={this.handleOnChangeContent}/> 
+                <br/>
+                <label>Par:</label><br />
+                <input 
+                name="par"
+                type="integer"
+                value={this.state.course.par}
+                onChange={this.handleOnChangeContent}/> <br/><br/>
+                <label>Slope Rating:</label><br />
+                <input 
+                name="slope"
+                type="integer"
+                value={this.state.course.slope}
+                onChange={this.handleOnChangeContent}/> <br/><br/>
+                <label>Course Rating:</label><br />
+                <input 
+                name="rating"
+                type="integer"
+                value={this.state.course.rating}
+                onChange={this.handleOnChangeContent}/> <br/><br/>
+
+                <button type="submit">Add Course</button>       
+            </form>
+        );
+      }
+    
 }
 
-export default CourseForm
+export default connect(null, { addCourse })(CourseForm);
