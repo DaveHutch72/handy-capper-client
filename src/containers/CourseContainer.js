@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
-import NavBar from '../components/NavBar';
+import Navi from '../components/Navi';
 import Home from '../components/Home'
 import CourseForm from './CourseForm'
 import { getCourses } from '../actions/courses'
@@ -17,7 +17,7 @@ class CourseContainer extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <NavBar/>
+                <Navi/>
                 <Switch>
                     <Route exact path='/courses' component={CourseList} />
                     <Route exact path='/' component={Home} />
