@@ -31,8 +31,8 @@ class ScoreList extends Component {
 
 const mapStateToProps = state => {
     return {
-        scores: state.trailReducer.scores,
-        loading: state.parkReducer.loading
+        scores: state.scoreReducer.scores,
+        loading: state.courseReducer.loading
     }
 }
 

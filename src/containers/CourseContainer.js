@@ -16,7 +16,7 @@ class CourseContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container-fluid">
                 <NavBar/>
                 <Switch>
                     <Route exact path='/courses' component={CourseList} />

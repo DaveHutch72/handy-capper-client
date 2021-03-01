@@ -31,6 +31,7 @@ export const addScore = score => {
             body: JSON.stringify(score),
             headers:{
                 'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         })
         .then(res => res.json())

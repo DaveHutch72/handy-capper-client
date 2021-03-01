@@ -23,7 +23,6 @@ class ScoreForm extends Component {
         event.preventDefault()
         const score = {...this.state.score,
         course_id: this.props.history.match.params.id}   
-        console.log(score)
         this.props.addScore(score)
         this.setState({
             score: {
