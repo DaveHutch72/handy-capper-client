@@ -11,8 +11,10 @@ class ScoreForm extends Component {
     }
 
     handleChange = event => {
-        this.setState({...this.state,
-            score: {...this.state.score,
+        this.setState({
+            ...this.state,
+            score: {
+                ...this.state.score,
                 [event.target.name]: event.target.value
             },
 
@@ -21,8 +23,11 @@ class ScoreForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault()
-        const score = {...this.state.score,
-        course_id: this.props.history.match.params.id}   
+        const score = {
+            ...this.state.score,
+            course_id: this.props.history.match.params.id
+        }
+        console.log(score)
         this.props.addScore(score)
         this.setState({
             score: {
@@ -31,33 +36,34 @@ class ScoreForm extends Component {
             },
         })
 
+
     }
 
     render() {
         return (
-            
+
             <form onSubmit={this.handleOnSubmit}>
-                <br/>
-                <h3>Add A Score</h3>
-                <br/>
-                <label>Score:</label><br/>
-                    <input 
-                        name="round"
-                        type="integer"
-                        value={this.state.score.round}
-                        onChange={this.handleChange}/> 
-                    <br/>
-                <label>Adjusted Score:</label><br/>
-                <input 
+                <br />
+                <h3><br></br>Add A Score</h3>
+                <br />
+                <label>Score:</label><br />
+                <input
+                    name="round"
+                    type="integer"
+                    value={this.state.score.round}
+                    onChange={this.handleChange} />
+                <br />
+                <label>Adjusted Score:</label><br />
+                <input
                     name="adjusted_round"
                     type="integer"
                     value={this.state.score.adjusted_round}
-                    onChange={this.handleChange}/> 
-                <br/>
+                    onChange={this.handleChange} />
+                <br />
 
-                <button type="submit">Add Score</button> 
-                <br/>
-                <hr/>      
+                <button type="submit">Add Score</button>
+                <br />
+                <hr />
             </form>
         );
     }

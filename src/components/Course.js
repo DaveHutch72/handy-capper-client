@@ -4,21 +4,31 @@ import { getScores } from '../actions/scores'
 
 
 class Course extends Component {
-    
+
     render() {
-        const course = this.props.courses.find(c => `${c.id}` === this.props.history.match.params.id )
-        console.log(course)
-        const scoreLis = course.scores.map(s => 
-        <li key={s.id}>Round: {s.round} Adjusted Round: {s.adjusted_round}</li>)
-        
+        console.log('props1',this.props)
+
+
+        let course = this.props.courses.find(c => `${c.id}` === this.props.history.match.params.id)
+        if (!course) {
+            course = {
+                name: "",
+                scores: []
+            }
+        }
+
+        console.log('scores1',course.scores)
+        const scoreLis = course.scores.map(s =>
+            <li key={s.id}>Round: {s.round} Adjusted Round: {s.adjusted_round}</li>)
+
         return (
             <div>
-                <br/>
+                <br />
                 <h3 className="text-center">Course Scores For {course.name}  </h3>
-                <br/>
+                <br />
                 {scoreLis}
-                <br/>
-                
+                <br />
+
             </div>
         )
     }

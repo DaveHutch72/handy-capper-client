@@ -16,12 +16,12 @@ class CourseContainer extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div>
                 <Navi/>
                 <Switch>
                     <Route exact path='/courses' component={CourseList} />
                     <Route exact path='/' component={Home} />
-                    <Route exact path='/course/new' component={CourseForm}/>
+                    <Route exact path='/courses/new' component={CourseForm}/>
                     <Route path='/courses/:id' component={CourseScoreContainer} />
                 </Switch>
             </div>

@@ -42,7 +42,7 @@ class CourseForm extends Component {
             
             <form onSubmit={this.handleOnSubmit}>
                 <br/>
-                <h4>Add a Course</h4>
+                <h4><br/><br/>Add a Course</h4>
                 <label>Course Name:</label><br/>
                 <input 
                 name="name"

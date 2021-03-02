@@ -18,7 +18,7 @@ class CourseList extends Component {
     return (
             <div className="courselist">
                 <br/>
-                <h1 className="text-center">My Courses</h1>
+                <h1 className="text-center"><br></br>My Courses</h1>
                 <br/>
                 <ul>
                     {this.props.loading ? <h3>Loading....</h3> :coursesLis}
